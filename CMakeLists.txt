@@ -22,6 +22,8 @@ add_executable (OpenGlLearn
 	"glad/glad.c"
 	"glad/glad.h"
 	"glad/khrplatform.h"
+	"glfw.h"
+	"glfw.cc"
 )
 
 target_link_libraries(OpenGlLearn
@@ -29,5 +31,9 @@ target_link_libraries(OpenGlLearn
 		glfw
 		opengl32
 )
+
+# 资源文件
+FILE(GLOB SHADER "shaders/*")
+FILE(COPY ${SHADER} DESTINATION "${PROJECT_BINARY_DIR}/shaders")
 
 # TODO: 如有需要，请添加测试并安装目标。
