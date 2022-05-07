@@ -24,6 +24,10 @@ add_executable (OpenGlLearn
 	"glad/khrplatform.h"
 	"glfw.h"
 	"glfw.cc"
+	"shader.h"
+	"shader.cc"
+	"render.h"
+	"render.cc"
 )
 
 target_link_libraries(OpenGlLearn

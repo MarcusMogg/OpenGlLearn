@@ -12,8 +12,11 @@ using namespace gllearn;
 
 int main() {
   Window window;
+  std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
   window.Init();
+  renderer->Init();
   window.RegisterKey(GLFW_KEY_ESCAPE, [](GLFWwindow* window) { glfwSetWindowShouldClose(window, true); });
-  window.Run();
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  window.Run(renderer);
   return 0;
 }

@@ -5,6 +5,7 @@
 #include "glad/glad.h"
 // glad must bufore glfw
 #include "GLFW/glfw3.h"
+#include "render.h"
 
 using namespace gllearn;
 using namespace std;
@@ -35,11 +36,11 @@ int Window::Init() {
   return 0;
 }
 
-void Window::Run() {
+void Window::Run(std::shared_ptr<Renderer> renderer) {
   while (!glfwWindowShouldClose(window_)) {
     ProcessInput();
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+
+    renderer->Render();
 
     glfwPollEvents();
     glfwSwapBuffers(window_);
