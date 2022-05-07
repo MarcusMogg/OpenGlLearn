@@ -1,6 +1,8 @@
 #pragma once
+#include <memory>
 
 namespace gllearn {
+class ShaderProgram;
 class Renderer {
  public:
   Renderer() : VAO(0), VBO(0), EBO(0), shader(0) {}
@@ -14,5 +16,7 @@ class Renderer {
   unsigned int VBO;  // vertex data buff
   unsigned int EBO;  // index buff
   unsigned int shader;
+
+  std::shared_ptr<ShaderProgram> sp_;
 };
 }  // namespace gllearn

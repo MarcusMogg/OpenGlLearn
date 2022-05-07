@@ -16,7 +16,7 @@ int main() {
   window.Init();
   renderer->Init();
   window.RegisterKey(GLFW_KEY_ESCAPE, [](GLFWwindow* window) { glfwSetWindowShouldClose(window, true); });
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   window.Run(renderer);
   return 0;
 }

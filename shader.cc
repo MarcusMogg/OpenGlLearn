@@ -35,4 +35,22 @@ bool Shader::Load(const std::string& file, int shader_type) {
 
 Shader::~Shader() { glDeleteShader(shader_); }
 
-void Shader::AttachToProgram(unsigned int shader_program) { glAttachShader(shader_program, shader_); }
+void Shader::AttachToProgram(const ShaderProgram& p) { p.AddShader(shader_); }
+
+ShaderProgram::~ShaderProgram() { glDeleteProgram(shader_prog_); }
+ShaderProgram::ShaderProgram() { shader_prog_ = glCreateProgram(); }
+
+void ShaderProgram::Link() const { glLinkProgram(shader_prog_); }
+void ShaderProgram::Use() const { glUseProgram(shader_prog_); }
+
+void ShaderProgram::SetBool(const std::string& name, bool value) const {
+  glUniform1i(glGetUniformLocation(shader_prog_, name.c_str()), (int)value);
+}
+void ShaderProgram::SetInt(const std::string& name, int value) const {
+  glUniform1i(glGetUniformLocation(shader_prog_, name.c_str()), value);
+}
+void ShaderProgram::SetFloat(const std::string& name, float value) const {
+  glUniform1f(glGetUniformLocation(shader_prog_, name.c_str()), value);
+}
+
+void ShaderProgram::AddShader(unsigned int id) const { glAttachShader(shader_prog_, id); }
