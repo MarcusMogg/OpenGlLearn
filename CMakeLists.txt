@@ -31,6 +31,8 @@ add_executable (OpenGlLearn
 	"render.cc"
 	"stb_image.h"
 	"stb_image.cc"
+	"tex.h"
+	"tex.cc"
 )
 
 target_link_libraries(OpenGlLearn

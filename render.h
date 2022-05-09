@@ -3,6 +3,8 @@
 
 namespace gllearn {
 class ShaderProgram;
+class Texture;
+
 class Renderer {
  public:
   Renderer() : VAO(0), VBO(0), EBO(0), shader(0) {}
@@ -18,5 +20,6 @@ class Renderer {
   unsigned int shader;
 
   std::shared_ptr<ShaderProgram> sp_;
+  std::shared_ptr<Texture> tex_;
 };
 }  // namespace gllearn
